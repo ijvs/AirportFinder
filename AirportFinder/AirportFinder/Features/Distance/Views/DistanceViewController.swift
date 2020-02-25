@@ -170,14 +170,15 @@ extension DistanceViewController {
 // MARK: - DistanceViewControllerDelegate
 extension DistanceViewController: DistanceViewControllerDelegate {
     public func config(model: ViewModel) {
-           titleLabel.text = model.title
-           subtitleLabel.text = model.subtitle
-           counterSlider.maximumValue = model.sliderMaxValue
-           counterSlider.minimumValue = model.sliderMinValue
-           counterSlider.value = model.sliderValue
-           searchButton.setTitle(model.searchButtonTitle, for: .normal)
-           sliderDidChange()
-
-           view.setNeedsLayout()
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
+        counterSlider.maximumValue = model.sliderMaxValue
+        counterSlider.minimumValue = model.sliderMinValue
+        counterSlider.value = model.sliderValue
+        counterUnitsLabel.text = model.unitDescription
+        searchButton.setTitle(model.searchButtonTitle, for: .normal)
+        sliderDidChange()
+        
+        view.setNeedsLayout()
        }
 }

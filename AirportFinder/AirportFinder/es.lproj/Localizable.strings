@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  AirportFinder
+
+  Created by Israel Jonathan Velázquez Sánchez on 2/25/20.
+  Copyright © 2020 Siker. All rights reserved.
+*/
+
+"DISTANCE_SEARCH_BUTTON_TITLE" = "BUSCAR";
+
+"DISTANCE_UNIT_DESCRIPTION" = "RADIO EN KM";
