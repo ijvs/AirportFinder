@@ -12,6 +12,9 @@ import UIKit
 class AppCoordinator: Coordinator {
 
     let window: UIWindow
+
+    let distanceController = DistanceViewController()
+
     let rootViewController: UINavigationController = {
         UINavigationController()
     }()
@@ -21,6 +24,7 @@ class AppCoordinator: Coordinator {
     }
 
     func start() {
+        rootViewController.setViewControllers([distanceController], animated: false)
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }

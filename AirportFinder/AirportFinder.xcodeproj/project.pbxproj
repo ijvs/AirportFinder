@@ -15,6 +15,10 @@
 		ABE7AAF824056FA5001BE78B /* AirportFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AAF724056FA5001BE78B /* AirportFinderUITests.swift */; };
 		ABE7AB0C24057519001BE78B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB0B24057519001BE78B /* Coordinator.swift */; };
 		ABE7AB0E24057548001BE78B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB0D24057548001BE78B /* AppCoordinator.swift */; };
+		ABE7AB1024057667001BE78B /* DistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB0F24057667001BE78B /* DistanceViewController.swift */; };
+		ABE7AB1324057781001BE78B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB1224057781001BE78B /* Theme.swift */; };
+		ABE7AB162405820A001BE78B /* DistanceViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB152405820A001BE78B /* DistanceViewController+ViewModel.swift */; };
+		ABE7AB1824058655001BE78B /* DistancePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB1724058655001BE78B /* DistancePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		ABE7AAF924056FA5001BE78B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABE7AB0B24057519001BE78B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		ABE7AB0D24057548001BE78B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		ABE7AB0F24057667001BE78B /* DistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceViewController.swift; sourceTree = "<group>"; };
+		ABE7AB1224057781001BE78B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		ABE7AB152405820A001BE78B /* DistanceViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DistanceViewController+ViewModel.swift"; sourceTree = "<group>"; };
+		ABE7AB1724058655001BE78B /* DistancePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,7 @@
 		ABE7AB05240572BA001BE78B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				ABE7AB1124057768001BE78B /* Theme */,
 				ABE7AB0A24057502001BE78B /* Navigation */,
 			);
 			path = Core;
@@ -149,16 +158,18 @@
 			isa = PBXGroup;
 			children = (
 				ABE7AB092405740E001BE78B /* NearAirports */,
-				ABE7AB0824057407001BE78B /* DistanceRequester */,
+				ABE7AB0824057407001BE78B /* Distance */,
 			);
 			path = Features;
 			sourceTree = "<group>";
 		};
-		ABE7AB0824057407001BE78B /* DistanceRequester */ = {
+		ABE7AB0824057407001BE78B /* Distance */ = {
 			isa = PBXGroup;
 			children = (
+				ABE7AB1924058734001BE78B /* Views */,
+				ABE7AB1724058655001BE78B /* DistancePresenter.swift */,
 			);
-			path = DistanceRequester;
+			path = Distance;
 			sourceTree = "<group>";
 		};
 		ABE7AB092405740E001BE78B /* NearAirports */ = {
@@ -176,6 +187,23 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		ABE7AB1124057768001BE78B /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB1224057781001BE78B /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		ABE7AB1924058734001BE78B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB0F24057667001BE78B /* DistanceViewController.swift */,
+				ABE7AB152405820A001BE78B /* DistanceViewController+ViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,6 +214,7 @@
 				ABE7AACE24056FA4001BE78B /* Sources */,
 				ABE7AACF24056FA4001BE78B /* Frameworks */,
 				ABE7AAD024056FA4001BE78B /* Resources */,
+				ABE7AB1424057BA6001BE78B /* Swiftlint script */,
 			);
 			buildRules = (
 			);
@@ -301,14 +330,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		ABE7AB1424057BA6001BE78B /* Swiftlint script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftlint script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABE7AACE24056FA4001BE78B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ABE7AB0C24057519001BE78B /* Coordinator.swift in Sources */,
+				ABE7AB162405820A001BE78B /* DistanceViewController+ViewModel.swift in Sources */,
 				ABE7AB0E24057548001BE78B /* AppCoordinator.swift in Sources */,
 				ABE7AAD624056FA4001BE78B /* AppDelegate.swift in Sources */,
+				ABE7AB1324057781001BE78B /* Theme.swift in Sources */,
+				ABE7AB1824058655001BE78B /* DistancePresenter.swift in Sources */,
+				ABE7AB1024057667001BE78B /* DistanceViewController.swift in Sources */,
 				ABE7AAD824056FA4001BE78B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
