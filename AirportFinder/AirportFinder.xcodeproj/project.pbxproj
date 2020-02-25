@@ -99,8 +99,9 @@
 		ABE7AAD424056FA4001BE78B /* AirportFinder */ = {
 			isa = PBXGroup;
 			children = (
-				ABE7AAD524056FA4001BE78B /* AppDelegate.swift */,
-				ABE7AAD724056FA4001BE78B /* SceneDelegate.swift */,
+				ABE7AB06240572C1001BE78B /* AppDelegates */,
+				ABE7AB05240572BA001BE78B /* Core */,
+				ABE7AB0724057346001BE78B /* Features */,
 				ABE7AAD924056FA4001BE78B /* ViewController.swift */,
 				ABE7AADB24056FA4001BE78B /* Main.storyboard */,
 				ABE7AADE24056FA5001BE78B /* Assets.xcassets */,
@@ -126,6 +127,45 @@
 				ABE7AAF924056FA5001BE78B /* Info.plist */,
 			);
 			path = AirportFinderUITests;
+			sourceTree = "<group>";
+		};
+		ABE7AB05240572BA001BE78B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		ABE7AB06240572C1001BE78B /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AAD524056FA4001BE78B /* AppDelegate.swift */,
+				ABE7AAD724056FA4001BE78B /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
+			sourceTree = "<group>";
+		};
+		ABE7AB0724057346001BE78B /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB092405740E001BE78B /* NearAirports */,
+				ABE7AB0824057407001BE78B /* DistanceRequester */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		ABE7AB0824057407001BE78B /* DistanceRequester */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DistanceRequester;
+			sourceTree = "<group>";
+		};
+		ABE7AB092405740E001BE78B /* NearAirports */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NearAirports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
