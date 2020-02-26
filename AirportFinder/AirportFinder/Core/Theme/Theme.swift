@@ -18,6 +18,10 @@ struct Theme {
         return getDinamicColor(lightModeColor: .red, darkMode: .yellow)
     }()
 
+    static var secondaryLabelColor: UIColor = {
+        return getDinamicColor(lightModeColor: .gray, darkMode: .gray)
+    }()
+
     static var tintColor: UIColor = {
         return getDinamicColor(lightModeColor: .blue, darkMode: .blue)
     }()
