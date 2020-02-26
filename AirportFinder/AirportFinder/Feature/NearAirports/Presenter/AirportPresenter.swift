@@ -29,8 +29,8 @@ class AirportPresenterImp {
     private let locationUseCase: LocationUseCase
     private let airportUseCase: AirportUseCase
     private var authorizationStatus: Bindable<LocationAuthorizationStatus>?
-    private var currentLocation: Bindable<Location> =  Bindable<Location>()
-    private var view: [String: AirportViewController] = [String: AirportViewController]()
+    private var currentLocation: Bindable<Location>?
+    private var views: [String: AirportViewController] = [String: AirportViewController]()
 
     var coordinator: AirportCoordinator?
     var radius: Int = 0
@@ -45,7 +45,7 @@ class AirportPresenterImp {
 // MARK: - AirportPresenter
 extension AirportPresenterImp: AirportPresenter {
     func attach(view: AirportViewController) {
-        self.view[view.identifier] = view
+        self.views[view.identifier] = view
     }
 
     func load() {
@@ -76,16 +76,12 @@ extension AirportPresenterImp {
     private func handle(authorizationStatusUpdates status: LocationAuthorizationStatus) {
         switch status {
         case .authorized:
-            sendViewStateUpdate(state: .loading)
 
-//            let errorViewModel = AirportViewErrorModel(title: "ERROR_TITLE".localized,
-//                                                           message: "error.localizedDescription",
-//                                                           actionText: "RETRY".localized,
-//                                                           action: AirportAction.load)
-//            self.sendViewStateUpdate(state: .error(error: errorViewModel))
-
-            currentLocation = locationUseCase.getCurrentLocation()
-            print("🥵 Loading Airports")
+            guard let currentLocation = currentLocation else {
+                self.currentLocation = locationUseCase.getCurrentLocation()
+                handle(authorizationStatusUpdates: status)
+                return
+            }
 
             currentLocation.addObservation(for: currentLocation, handler: { [weak self] (_, location) in
                 guard let self = self else { return }
@@ -106,6 +102,9 @@ extension AirportPresenterImp {
     }
 
     private func loadAirportList(radius: Int, location: Location) {
+        print("🥵 Loading Airports")
+        sendViewStateUpdate(state: .loading)
+
         airportUseCase.getNearAirports(byRadius: radius, location: location) {[weak self] (result) in
             guard let self = self else { return }
             switch result {
@@ -129,7 +128,8 @@ extension AirportPresenterImp {
 
     private func sendViewStateUpdate(state: AirportViewControllerState) {
         DispatchQueue.main.async { [weak self] in
-            self?.view.forEach({ $1.update(state: state) })
+            print(state)
+            self?.views.forEach({ $1.update(state: state) })
         }
     }
 }

@@ -15,6 +15,8 @@ class AirportListViewController: UIViewController {
     private var airportList: [AirportView.ViewModel] = []
     private let tableView = UITableView()
 
+    let loadingView = LoadingView()
+
     typealias AirportViewCell = ContainerTableViewCell<AirportView>
 
     init(presenter: AirportPresenter) {
@@ -33,7 +35,7 @@ class AirportListViewController: UIViewController {
         presenter.load()
     }
 
-    func setupView() {
+    private func setupView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -43,10 +45,24 @@ class AirportListViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loadingView)
+        NSLayoutConstraint.activate([
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        loadingView.configure()
+
         tableView.register(AirportViewCell.self, forCellReuseIdentifier: AirportViewCell.description())
 
         tableView.delegate = self
         tableView.dataSource = self
+    }
+
+    private func showAlert(title: String, message: String) {
+
     }
 }
 
@@ -61,16 +77,27 @@ extension AirportListViewController: AirportViewController {
     }
 
     func update(state: ViewState<[AirportView.ViewModel], AirportViewErrorModel>) {
-
         switch state {
         case .loading:
-            break
+            loadingView.show()
         case .content(let content):
+            loadingView.dismiss()
             airportList = content
             tableView.reloadData()
-        case .error:
-            break //TODO: Use error model
+        case .error(let errorModel):
+            loadingView.dismiss()
+            let alert = UIAlertController(title: errorModel.title,
+                                          message: errorModel.message,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: errorModel.actionText,
+                                          style: .destructive,
+                                          handler: {[weak self] (_) in
+                                            self?.presenter.handle(action: errorModel.action)
+            }))
+
+            present(alert, animated: true, completion: nil)
         case .empty:
+            loadingView.dismiss()
             airportList = []
             tableView.reloadData()
             // TODO: Show Empty placeholder

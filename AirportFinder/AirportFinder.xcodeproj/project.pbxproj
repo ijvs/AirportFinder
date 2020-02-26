@@ -45,6 +45,7 @@
 		ABF1EA4D2406CCBD00C20102 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA4C2406CCBD00C20102 /* Bindable.swift */; };
 		ABF1EA4F2406D3A300C20102 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA4E2406D3A300C20102 /* ViewState.swift */; };
 		ABF1EA5124070B4400C20102 /* AirportTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA5024070B4400C20102 /* AirportTabBarViewController.swift */; };
+		ABF1EA5324071A8600C20102 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA5224071A8600C20102 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		ABF1EA4C2406CCBD00C20102 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		ABF1EA4E2406D3A300C20102 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		ABF1EA5024070B4400C20102 /* AirportTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportTabBarViewController.swift; sourceTree = "<group>"; };
+		ABF1EA5224071A8600C20102 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +372,7 @@
 			children = (
 				ABE7AB582406B1B2001BE78B /* ContainerTableViewCell.swift */,
 				ABF1EA4E2406D3A300C20102 /* ViewState.swift */,
+				ABF1EA5224071A8600C20102 /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				ABE7AAD624056FA4001BE78B /* AppDelegate.swift in Sources */,
 				ABE7AB2D24058E92001BE78B /* Location.swift in Sources */,
 				ABE7AB48240692EF001BE78B /* Environment.swift in Sources */,
+				ABF1EA5324071A8600C20102 /* LoadingView.swift in Sources */,
 				ABE7AB3D24060302001BE78B /* BaseNetworkService.swift in Sources */,
 				ABE7AB1324057781001BE78B /* Theme.swift in Sources */,
 				ABE7AB4F2406A2F9001BE78B /* AirportMapViewController.swift in Sources */,
