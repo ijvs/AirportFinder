@@ -41,9 +41,17 @@ enum AirportAPI: Endpoint, URLRequestConvertible {
         return nil
     }
 
+    var headers: [String : String]? {
+        return [
+            "x-rapidapi-host": "cometari-airportsfinder-v1.p.rapidapi.com",
+            "x-rapidapi-key": "587948c69bmsh6bd1647577a4f54p168162jsn7979dc431956"
+        ]
+    }
+
     func asURLRequest() throws -> URLRequest {
 
-        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)
+        var urlComponents = URLComponents(url: baseURL.appendingPathComponent(path),
+                                          resolvingAgainstBaseURL: false)
 
         if let params = params {
             let queryItems = params.map { URLQueryItem(name: $0, value: $1) }
@@ -56,6 +64,10 @@ enum AirportAPI: Endpoint, URLRequestConvertible {
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
+
+        if let headers = headers {
+            headers.forEach { urlRequest.addValue($1, forHTTPHeaderField: $0) }
+        }
 
         if let body = body {
             let jsonEncoder = JSONEncoder()
