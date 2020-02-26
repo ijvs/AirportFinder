@@ -31,7 +31,7 @@ class BaseNetworkService<Model: Decodable> {
             } catch {
                 completion(.failure(error))
             }
-        }
+        }.resume()
     }
 
     private var genericParser: ParserMethod<Model> = { data in
