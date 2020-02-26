@@ -65,7 +65,6 @@
 		ABE7AAD724056FA4001BE78B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ABE7AADE24056FA5001BE78B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABE7AAE124056FA5001BE78B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		ABE7AAE324056FA5001BE78B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABE7AAE824056FA5001BE78B /* AirportFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirportFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE7AAEC24056FA5001BE78B /* AirportFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportFinderTests.swift; sourceTree = "<group>"; };
 		ABE7AAEE24056FA5001BE78B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,6 +100,9 @@
 		ABE7AB4E2406A2F9001BE78B /* AirportMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportMapViewController.swift; sourceTree = "<group>"; };
 		ABE7AB512406A31B001BE78B /* AirportListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportListViewController.swift; sourceTree = "<group>"; };
 		ABE7AB532406A336001BE78B /* AirportBaseViewContrroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportBaseViewContrroller.swift; sourceTree = "<group>"; };
+		ABE7AB5A2406C56A001BE78B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		ABE7AB5C2406C570001BE78B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
+		ABE7AB5D2406C571001BE78B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +158,7 @@
 				ABE7AB0724057346001BE78B /* Feature */,
 				ABE7AADE24056FA5001BE78B /* Assets.xcassets */,
 				ABE7AAE024056FA5001BE78B /* LaunchScreen.storyboard */,
-				ABE7AAE324056FA5001BE78B /* Info.plist */,
+				ABE7AB5B2406C56A001BE78B /* Info.plist */,
 				ABE7AB1F24058936001BE78B /* Localizable.strings */,
 			);
 			path = AirportFinder;
@@ -584,6 +586,16 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		ABE7AB5B2406C56A001BE78B /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABE7AB5A2406C56A001BE78B /* Base */,
+				ABE7AB5C2406C570001BE78B /* en */,
+				ABE7AB5D2406C571001BE78B /* es */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -709,7 +721,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3VV4SD4LV;
-				INFOPLIST_FILE = AirportFinder/Info.plist;
+				INFOPLIST_FILE = AirportFinder/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -727,7 +739,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3VV4SD4LV;
-				INFOPLIST_FILE = AirportFinder/Info.plist;
+				INFOPLIST_FILE = AirportFinder/Base.lproj/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
