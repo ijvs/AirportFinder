@@ -22,7 +22,7 @@
 		ABE7AB1D24058936001BE78B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABE7AB1F24058936001BE78B /* Localizable.strings */; };
 		ABE7AB23240589D9001BE78B /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB22240589D9001BE78B /* String+localized.swift */; };
 		ABE7AB2724058AE9001BE78B /* DistanceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2624058AE9001BE78B /* DistanceCoordinator.swift */; };
-		ABE7AB2924058D86001BE78B /* AirportsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2824058D86001BE78B /* AirportsPresenter.swift */; };
+		ABE7AB2924058D86001BE78B /* AirportPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2824058D86001BE78B /* AirportPresenter.swift */; };
 		ABE7AB2B24058DE9001BE78B /* AirportUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2A24058DE9001BE78B /* AirportUseCase.swift */; };
 		ABE7AB2D24058E92001BE78B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2C24058E92001BE78B /* Location.swift */; };
 		ABE7AB2F24058F03001BE78B /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2E24058F03001BE78B /* Airport.swift */; };
@@ -40,6 +40,10 @@
 		ABE7AB4F2406A2F9001BE78B /* AirportMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB4E2406A2F9001BE78B /* AirportMapViewController.swift */; };
 		ABE7AB522406A31B001BE78B /* AirportListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB512406A31B001BE78B /* AirportListViewController.swift */; };
 		ABE7AB542406A336001BE78B /* AirportBaseViewContrroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB532406A336001BE78B /* AirportBaseViewContrroller.swift */; };
+		ABE7AB562406AD83001BE78B /* AirportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB552406AD83001BE78B /* AirportView.swift */; };
+		ABE7AB592406B1B2001BE78B /* ContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB582406B1B2001BE78B /* ContainerTableViewCell.swift */; };
+		ABF1EA4D2406CCBD00C20102 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA4C2406CCBD00C20102 /* Bindable.swift */; };
+		ABF1EA4F2406D3A300C20102 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA4E2406D3A300C20102 /* ViewState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +86,7 @@
 		ABE7AB202405893A001BE78B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ABE7AB22240589D9001BE78B /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		ABE7AB2624058AE9001BE78B /* DistanceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCoordinator.swift; sourceTree = "<group>"; };
-		ABE7AB2824058D86001BE78B /* AirportsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsPresenter.swift; sourceTree = "<group>"; };
+		ABE7AB2824058D86001BE78B /* AirportPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportPresenter.swift; sourceTree = "<group>"; };
 		ABE7AB2A24058DE9001BE78B /* AirportUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportUseCase.swift; sourceTree = "<group>"; };
 		ABE7AB2C24058E92001BE78B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		ABE7AB2E24058F03001BE78B /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
@@ -100,9 +104,13 @@
 		ABE7AB4E2406A2F9001BE78B /* AirportMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportMapViewController.swift; sourceTree = "<group>"; };
 		ABE7AB512406A31B001BE78B /* AirportListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportListViewController.swift; sourceTree = "<group>"; };
 		ABE7AB532406A336001BE78B /* AirportBaseViewContrroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportBaseViewContrroller.swift; sourceTree = "<group>"; };
+		ABE7AB552406AD83001BE78B /* AirportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportView.swift; sourceTree = "<group>"; };
+		ABE7AB582406B1B2001BE78B /* ContainerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTableViewCell.swift; sourceTree = "<group>"; };
 		ABE7AB5A2406C56A001BE78B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		ABE7AB5C2406C570001BE78B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		ABE7AB5D2406C571001BE78B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
+		ABF1EA4C2406CCBD00C20102 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		ABF1EA4E2406D3A300C20102 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,11 +193,13 @@
 		ABE7AB05240572BA001BE78B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				ABE7AB572406B1A6001BE78B /* View */,
 				ABE7AB46240692E3001BE78B /* Constants */,
 				ABE7AB3B2406028F001BE78B /* Networking */,
 				ABE7AB21240589B3001BE78B /* Strings */,
 				ABE7AB1124057768001BE78B /* Theme */,
 				ABE7AB0A24057502001BE78B /* Navigation */,
+				ABF1EA4C2406CCBD00C20102 /* Bindable.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -230,7 +240,7 @@
 				ABE7AB3224059005001BE78B /* Repository */,
 				ABE7AB3024058F0C001BE78B /* Models */,
 				ABE7AB4B24069D4D001BE78B /* Presenter */,
-				ABE7AB502406A306001BE78B /* ViewController */,
+				ABE7AB502406A306001BE78B /* Views */,
 				ABE7AB49240699CF001BE78B /* AirportAPI.swift */,
 				ABE7AB4C2406A2D1001BE78B /* AirportCoordinator.swift */,
 			);
@@ -298,8 +308,8 @@
 		ABE7AB3124058FEE001BE78B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				ABE7AB2A24058DE9001BE78B /* AirportUseCase.swift */,
 				ABE7AB352405F5A3001BE78B /* LocationUseCase.swift */,
+				ABE7AB2A24058DE9001BE78B /* AirportUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -336,19 +346,29 @@
 		ABE7AB4B24069D4D001BE78B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				ABE7AB2824058D86001BE78B /* AirportsPresenter.swift */,
+				ABE7AB2824058D86001BE78B /* AirportPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		ABE7AB502406A306001BE78B /* ViewController */ = {
+		ABE7AB502406A306001BE78B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				ABE7AB532406A336001BE78B /* AirportBaseViewContrroller.swift */,
-				ABE7AB4E2406A2F9001BE78B /* AirportMapViewController.swift */,
 				ABE7AB512406A31B001BE78B /* AirportListViewController.swift */,
+				ABE7AB4E2406A2F9001BE78B /* AirportMapViewController.swift */,
+				ABE7AB552406AD83001BE78B /* AirportView.swift */,
 			);
-			path = ViewController;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABE7AB572406B1A6001BE78B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB582406B1B2001BE78B /* ContainerTableViewCell.swift */,
+				ABF1EA4E2406D3A300C20102 /* ViewState.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,12 +531,15 @@
 				ABE7AB2B24058DE9001BE78B /* AirportUseCase.swift in Sources */,
 				ABE7AB362405F5A3001BE78B /* LocationUseCase.swift in Sources */,
 				ABE7AB162405820A001BE78B /* DistanceViewController+ViewModel.swift in Sources */,
+				ABF1EA4F2406D3A300C20102 /* ViewState.swift in Sources */,
 				ABE7AB2F24058F03001BE78B /* Airport.swift in Sources */,
 				ABE7AB45240692BB001BE78B /* URLRequestConvertible.swift in Sources */,
 				ABE7AB542406A336001BE78B /* AirportBaseViewContrroller.swift in Sources */,
-				ABE7AB2924058D86001BE78B /* AirportsPresenter.swift in Sources */,
+				ABE7AB2924058D86001BE78B /* AirportPresenter.swift in Sources */,
 				ABE7AB4D2406A2D2001BE78B /* AirportCoordinator.swift in Sources */,
 				ABE7AB522406A31B001BE78B /* AirportListViewController.swift in Sources */,
+				ABF1EA4D2406CCBD00C20102 /* Bindable.swift in Sources */,
+				ABE7AB562406AD83001BE78B /* AirportView.swift in Sources */,
 				ABE7AB0E24057548001BE78B /* AppCoordinator.swift in Sources */,
 				ABE7AB3424059057001BE78B /* AirportRepository.swift in Sources */,
 				ABE7AAD624056FA4001BE78B /* AppDelegate.swift in Sources */,
@@ -529,6 +552,7 @@
 				ABE7AB412406928A001BE78B /* Endpoint.swift in Sources */,
 				ABE7AB1824058655001BE78B /* DistancePresenter.swift in Sources */,
 				ABE7AB1024057667001BE78B /* DistanceViewController.swift in Sources */,
+				ABE7AB592406B1B2001BE78B /* ContainerTableViewCell.swift in Sources */,
 				ABE7AB3F240606A6001BE78B /* ParsingError.swift in Sources */,
 				ABE7AB23240589D9001BE78B /* String+localized.swift in Sources */,
 				ABE7AB4A240699CF001BE78B /* AirportAPI.swift in Sources */,

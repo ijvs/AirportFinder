@@ -7,7 +7,30 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AirportCoordinator {
     func goToLocationSettings()
+}
+
+class AirportCoordinatorImp: Coordinator, AirportCoordinator {
+
+    let window: UIWindow
+
+    private var airportListViewController: AirportListViewController?
+
+    init(window: UIWindow) {
+        self.window = window
+
+        let presenter = AirportPresenterImp(coordinator: self, radius: 100)
+        airportListViewController = AirportListViewController(presenter: presenter)
+    }
+
+    func start() {
+        window.rootViewController = airportListViewController
+        window.makeKeyAndVisible()
+    }
+
+    func goToLocationSettings() {
+    }
 }

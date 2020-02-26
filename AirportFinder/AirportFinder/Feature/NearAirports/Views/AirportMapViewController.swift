@@ -1,5 +1,5 @@
 //
-//  AirportListViewController.swift
+//  AirportMapViewController.swift
 //  AirportFinder
 //
 //  Created by Israel Jonathan Velázquez Sánchez on 2/26/20.

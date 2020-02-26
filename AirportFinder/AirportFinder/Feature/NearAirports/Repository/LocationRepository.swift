@@ -16,36 +16,49 @@ enum LocationAuthorizationStatus {
 }
 
 protocol LocationRepository {
-    var currentLocation: Location? { get }
-    var authorizationStatus: LocationAuthorizationStatus { get }
+    var currentLocation: Bindable<Location> { get }
+    var authorizationStatus: Bindable<LocationAuthorizationStatus> { get }
     func requestLocationAuthorization()
 }
 
 class LocationRepositoryImp: CLLocationManager, LocationRepository {
-    var currentLocation: Location? {
-        guard let coordinate = location?.coordinate else {
-            return nil
-        }
-        return Location(longitude: coordinate.longitude,
-                        latitude: coordinate.latitude)
+
+    override init() {
+        super.init()
+        delegate = self
+        startMonitoringSignificantLocationChanges()
     }
 
-    var authorizationStatus: LocationAuthorizationStatus {
-
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse, .authorizedAlways:
-            return .authorized
-        case .denied, .restricted:
-            return .denied
-        case .notDetermined:
-            return .notDetermined
-        @unknown default:
-            return .notDetermined
-        }
-    }
+    var currentLocation: Bindable<Location> = Bindable<Location>()
+    var authorizationStatus: Bindable<LocationAuthorizationStatus> = Bindable<LocationAuthorizationStatus>()
 
     func requestLocationAuthorization() {
         self.requestWhenInUseAuthorization()
 
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension LocationRepositoryImp: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            authorizationStatus.update(with: .authorized)
+        case .denied, .restricted:
+            authorizationStatus.update(with: .denied)
+        case .notDetermined:
+            authorizationStatus.update(with: .notDetermined)
+        @unknown default:
+            authorizationStatus.update(with: .notDetermined)
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let coordinate = locations.first?.coordinate else {
+            return
+        }
+        print("🌎 Updated location")
+        let updateValue = Location(longitude: coordinate.longitude, latitude: coordinate.latitude)
+        currentLocation.update(with: updateValue)
     }
 }

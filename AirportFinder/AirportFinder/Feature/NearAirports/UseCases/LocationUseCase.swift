@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 protocol GetCurrentLocationUseCase {
-    func getCurrentLocation(completion: (Location?) -> Void)
+    func getCurrentLocation() -> Bindable<Location>
 }
 
 protocol RequestLocationAuthorizationUserCase {
@@ -18,7 +18,7 @@ protocol RequestLocationAuthorizationUserCase {
 }
 
 protocol LocationAuthorizationStatusUserCase {
-    func getLocationAuthorizationStatus() -> LocationAuthorizationStatus
+    func getLocationAuthorizationStatus() -> Bindable<LocationAuthorizationStatus>
 }
 
 protocol LocationUseCase: GetCurrentLocationUseCase,
@@ -26,21 +26,23 @@ protocol LocationUseCase: GetCurrentLocationUseCase,
     LocationAuthorizationStatusUserCase { }
 
 class LocationUseCaseImp: LocationUseCase {
+
     let locationRepository: LocationRepository
 
     init(locationRepository: LocationRepository = LocationRepositoryImp()) {
         self.locationRepository = locationRepository
     }
 
-    func getCurrentLocation(completion: (Location?) -> Void) {
-        completion(locationRepository.currentLocation)
-    }
 
+    func getCurrentLocation() -> Bindable<Location> {
+        return locationRepository.currentLocation
+    }
+    
     func requestLocationAuthorization() {
         locationRepository.requestLocationAuthorization()
     }
 
-    func getLocationAuthorizationStatus() -> LocationAuthorizationStatus {
+    func getLocationAuthorizationStatus() -> Bindable<LocationAuthorizationStatus> {
         return locationRepository.authorizationStatus
     }
 }
