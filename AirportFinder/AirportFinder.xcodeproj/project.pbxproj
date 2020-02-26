@@ -21,6 +21,14 @@
 		ABE7AB1824058655001BE78B /* DistancePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB1724058655001BE78B /* DistancePresenter.swift */; };
 		ABE7AB1D24058936001BE78B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABE7AB1F24058936001BE78B /* Localizable.strings */; };
 		ABE7AB23240589D9001BE78B /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB22240589D9001BE78B /* String+localized.swift */; };
+		ABE7AB2724058AE9001BE78B /* DistanceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2624058AE9001BE78B /* DistanceCoordinator.swift */; };
+		ABE7AB2924058D86001BE78B /* AirportsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2824058D86001BE78B /* AirportsPresenter.swift */; };
+		ABE7AB2B24058DE9001BE78B /* AirportUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2A24058DE9001BE78B /* AirportUseCase.swift */; };
+		ABE7AB2D24058E92001BE78B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2C24058E92001BE78B /* Location.swift */; };
+		ABE7AB2F24058F03001BE78B /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB2E24058F03001BE78B /* Airport.swift */; };
+		ABE7AB3424059057001BE78B /* AirportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB3324059057001BE78B /* AirportRepository.swift */; };
+		ABE7AB362405F5A3001BE78B /* LocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB352405F5A3001BE78B /* LocationUseCase.swift */; };
+		ABE7AB3A2405FF3C001BE78B /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB392405FF3C001BE78B /* LocationRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +71,14 @@
 		ABE7AB1E24058936001BE78B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ABE7AB202405893A001BE78B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ABE7AB22240589D9001BE78B /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
+		ABE7AB2624058AE9001BE78B /* DistanceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCoordinator.swift; sourceTree = "<group>"; };
+		ABE7AB2824058D86001BE78B /* AirportsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsPresenter.swift; sourceTree = "<group>"; };
+		ABE7AB2A24058DE9001BE78B /* AirportUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportUseCase.swift; sourceTree = "<group>"; };
+		ABE7AB2C24058E92001BE78B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		ABE7AB2E24058F03001BE78B /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		ABE7AB3324059057001BE78B /* AirportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportRepository.swift; sourceTree = "<group>"; };
+		ABE7AB352405F5A3001BE78B /* LocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUseCase.swift; sourceTree = "<group>"; };
+		ABE7AB392405FF3C001BE78B /* LocationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +131,7 @@
 			children = (
 				ABE7AB06240572C1001BE78B /* AppDelegates */,
 				ABE7AB05240572BA001BE78B /* Core */,
-				ABE7AB0724057346001BE78B /* Features */,
+				ABE7AB0724057346001BE78B /* Feature */,
 				ABE7AADE24056FA5001BE78B /* Assets.xcassets */,
 				ABE7AAE024056FA5001BE78B /* LaunchScreen.storyboard */,
 				ABE7AAE324056FA5001BE78B /* Info.plist */,
@@ -162,20 +178,21 @@
 			path = AppDelegates;
 			sourceTree = "<group>";
 		};
-		ABE7AB0724057346001BE78B /* Features */ = {
+		ABE7AB0724057346001BE78B /* Feature */ = {
 			isa = PBXGroup;
 			children = (
 				ABE7AB092405740E001BE78B /* NearAirports */,
 				ABE7AB0824057407001BE78B /* Distance */,
 			);
-			path = Features;
+			path = Feature;
 			sourceTree = "<group>";
 		};
 		ABE7AB0824057407001BE78B /* Distance */ = {
 			isa = PBXGroup;
 			children = (
-				ABE7AB1924058734001BE78B /* Views */,
-				ABE7AB1724058655001BE78B /* DistancePresenter.swift */,
+				ABE7AB2524058ADD001BE78B /* Coordinator */,
+				ABE7AB1924058734001BE78B /* View */,
+				ABE7AB2424058A9F001BE78B /* Presenter */,
 			);
 			path = Distance;
 			sourceTree = "<group>";
@@ -183,6 +200,10 @@
 		ABE7AB092405740E001BE78B /* NearAirports */ = {
 			isa = PBXGroup;
 			children = (
+				ABE7AB3124058FEE001BE78B /* UseCases */,
+				ABE7AB3224059005001BE78B /* Repository */,
+				ABE7AB3024058F0C001BE78B /* Models */,
+				ABE7AB2824058D86001BE78B /* AirportsPresenter.swift */,
 			);
 			path = NearAirports;
 			sourceTree = "<group>";
@@ -203,13 +224,13 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
-		ABE7AB1924058734001BE78B /* Views */ = {
+		ABE7AB1924058734001BE78B /* View */ = {
 			isa = PBXGroup;
 			children = (
 				ABE7AB0F24057667001BE78B /* DistanceViewController.swift */,
 				ABE7AB152405820A001BE78B /* DistanceViewController+ViewModel.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		ABE7AB21240589B3001BE78B /* Strings */ = {
@@ -218,6 +239,49 @@
 				ABE7AB22240589D9001BE78B /* String+localized.swift */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		ABE7AB2424058A9F001BE78B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB1724058655001BE78B /* DistancePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ABE7AB2524058ADD001BE78B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB2624058AE9001BE78B /* DistanceCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		ABE7AB3024058F0C001BE78B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB2C24058E92001BE78B /* Location.swift */,
+				ABE7AB2E24058F03001BE78B /* Airport.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABE7AB3124058FEE001BE78B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB2A24058DE9001BE78B /* AirportUseCase.swift */,
+				ABE7AB352405F5A3001BE78B /* LocationUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		ABE7AB3224059005001BE78B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				ABE7AB392405FF3C001BE78B /* LocationRepository.swift */,
+				ABE7AB3324059057001BE78B /* AirportRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,10 +439,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE7AB0C24057519001BE78B /* Coordinator.swift in Sources */,
+				ABE7AB3A2405FF3C001BE78B /* LocationRepository.swift in Sources */,
+				ABE7AB2B24058DE9001BE78B /* AirportUseCase.swift in Sources */,
+				ABE7AB362405F5A3001BE78B /* LocationUseCase.swift in Sources */,
 				ABE7AB162405820A001BE78B /* DistanceViewController+ViewModel.swift in Sources */,
+				ABE7AB2F24058F03001BE78B /* Airport.swift in Sources */,
+				ABE7AB2924058D86001BE78B /* AirportsPresenter.swift in Sources */,
 				ABE7AB0E24057548001BE78B /* AppCoordinator.swift in Sources */,
+				ABE7AB3424059057001BE78B /* AirportRepository.swift in Sources */,
 				ABE7AAD624056FA4001BE78B /* AppDelegate.swift in Sources */,
+				ABE7AB2D24058E92001BE78B /* Location.swift in Sources */,
 				ABE7AB1324057781001BE78B /* Theme.swift in Sources */,
+				ABE7AB2724058AE9001BE78B /* DistanceCoordinator.swift in Sources */,
 				ABE7AB1824058655001BE78B /* DistancePresenter.swift in Sources */,
 				ABE7AB1024057667001BE78B /* DistanceViewController.swift in Sources */,
 				ABE7AB23240589D9001BE78B /* String+localized.swift in Sources */,
