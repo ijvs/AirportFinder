@@ -52,6 +52,9 @@ class AirportListViewController: UIViewController {
 
 // MARK: - AirportViewController
 extension AirportListViewController: AirportViewController {
+    var identifier: String {
+        self.description
+    }
 
     func showAlert(title: String, message: String, actionText: String, action: AirportAction) {
 

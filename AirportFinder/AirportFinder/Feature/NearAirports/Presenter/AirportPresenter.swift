@@ -16,6 +16,8 @@ enum AirportAction {
 
 // MARK: - AirportPresenter
 protocol AirportPresenter {
+    var radius: Int {get set }
+    var coordinator: AirportCoordinator? { get set }
     func attach(view: AirportViewController)
     func load()
     func handle(action: AirportAction)
@@ -26,31 +28,31 @@ class AirportPresenterImp {
 
     private let locationUseCase: LocationUseCase
     private let airportUseCase: AirportUseCase
-    private let coordinator: AirportCoordinator
     private var authorizationStatus: Bindable<LocationAuthorizationStatus>?
     private var currentLocation: Bindable<Location> =  Bindable<Location>()
-    private var view: AirportViewController?
+    private var view: [String: AirportViewController] = [String: AirportViewController]()
 
-    var radius: Int
+    var coordinator: AirportCoordinator?
+    var radius: Int = 0
 
     init(locationUseCase: LocationUseCase = LocationUseCaseImp(),
-         airportUseCase: AirportUseCase = AirportUseCaseImp(),
-         coordinator: AirportCoordinator,
-         radius: Int) {
+         airportUseCase: AirportUseCase = AirportUseCaseImp()) {
         self.locationUseCase = locationUseCase
         self.airportUseCase = airportUseCase
-        self.coordinator = coordinator
-        self.radius = radius
     }
 }
 
 // MARK: - AirportPresenter
 extension AirportPresenterImp: AirportPresenter {
     func attach(view: AirportViewController) {
-        self.view = view
+        self.view[view.identifier] = view
     }
 
     func load() {
+        guard authorizationStatus == nil else {
+            return
+        }
+
         let authorizationStatus = locationUseCase.getLocationAuthorizationStatus()
         authorizationStatus.addObservation(for: authorizationStatus) { [weak self] (_, status) in
             guard let self = self else { return }
@@ -64,7 +66,7 @@ extension AirportPresenterImp: AirportPresenter {
         case .load:
             load()
         case .goToAuthorizationSettings:
-            coordinator.goToLocationSettings()
+            coordinator?.goToLocationSettings()
         }
     }
 }
@@ -83,8 +85,11 @@ extension AirportPresenterImp {
 //            self.sendViewStateUpdate(state: .error(error: errorViewModel))
 
             currentLocation = locationUseCase.getCurrentLocation()
+            print("🥵 Loading Airports")
+
             currentLocation.addObservation(for: currentLocation, handler: { [weak self] (_, location) in
                 guard let self = self else { return }
+                print("🛩 airports updated")
                 self.loadAirportList(radius: self.radius, location: location)
             })
 
@@ -110,6 +115,7 @@ extension AirportPresenterImp {
                                           accessoryText: airport.code,
                                           description: airport.countryCode)
                 }
+                print("🚀 updating ui")
                 self.sendViewStateUpdate(state: .content(content: viewModelList))
             case .failure(let error):
                 let errorViewModel = AirportViewErrorModel(title: "ERROR_TITLE".localized,
@@ -123,7 +129,7 @@ extension AirportPresenterImp {
 
     private func sendViewStateUpdate(state: AirportViewControllerState) {
         DispatchQueue.main.async { [weak self] in
-            self?.view?.update(state: state)
+            self?.view.forEach({ $1.update(state: state) })
         }
     }
 }

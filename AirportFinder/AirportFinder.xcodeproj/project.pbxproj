@@ -44,6 +44,7 @@
 		ABE7AB592406B1B2001BE78B /* ContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE7AB582406B1B2001BE78B /* ContainerTableViewCell.swift */; };
 		ABF1EA4D2406CCBD00C20102 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA4C2406CCBD00C20102 /* Bindable.swift */; };
 		ABF1EA4F2406D3A300C20102 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA4E2406D3A300C20102 /* ViewState.swift */; };
+		ABF1EA5124070B4400C20102 /* AirportTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1EA5024070B4400C20102 /* AirportTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		ABE7AB5D2406C571001BE78B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
 		ABF1EA4C2406CCBD00C20102 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		ABF1EA4E2406D3A300C20102 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		ABF1EA5024070B4400C20102 /* AirportTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +360,7 @@
 				ABE7AB512406A31B001BE78B /* AirportListViewController.swift */,
 				ABE7AB4E2406A2F9001BE78B /* AirportMapViewController.swift */,
 				ABE7AB552406AD83001BE78B /* AirportView.swift */,
+				ABF1EA5024070B4400C20102 /* AirportTabBarViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				ABF1EA4F2406D3A300C20102 /* ViewState.swift in Sources */,
 				ABE7AB2F24058F03001BE78B /* Airport.swift in Sources */,
 				ABE7AB45240692BB001BE78B /* URLRequestConvertible.swift in Sources */,
+				ABF1EA5124070B4400C20102 /* AirportTabBarViewController.swift in Sources */,
 				ABE7AB542406A336001BE78B /* AirportBaseViewContrroller.swift in Sources */,
 				ABE7AB2924058D86001BE78B /* AirportPresenter.swift in Sources */,
 				ABE7AB4D2406A2D2001BE78B /* AirportCoordinator.swift in Sources */,

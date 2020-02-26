@@ -11,6 +11,7 @@ import Foundation
 typealias AirportViewControllerState = ViewState<[AirportView.ViewModel], AirportViewErrorModel>
 
 protocol AirportViewController {
+    var identifier: String { get }
     func update(state: AirportViewControllerState)
 }
 

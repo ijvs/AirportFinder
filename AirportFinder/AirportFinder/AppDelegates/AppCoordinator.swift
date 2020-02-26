@@ -17,7 +17,7 @@ class AppCoordinator: Coordinator {
 
     let window: UIWindow
     var distanceCoordinator: DistanceCoodinator
-    let airportListCoordinator: AirportCoordinator
+    var airportListCoordinator: AirportCoordinator
 
     let rootViewController: UINavigationController = {
         UINavigationController()
@@ -38,6 +38,7 @@ class AppCoordinator: Coordinator {
 
 extension AppCoordinator: DistanceCoodinatorDelegate {
     func searchAirports(byRadius radius: Int) {
+        airportListCoordinator.radius = radius
         airportListCoordinator.start()
     }
 }

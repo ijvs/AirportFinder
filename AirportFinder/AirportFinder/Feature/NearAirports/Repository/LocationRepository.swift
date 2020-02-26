@@ -26,7 +26,14 @@ class LocationRepositoryImp: CLLocationManager, LocationRepository {
     override init() {
         super.init()
         delegate = self
-        startMonitoringSignificantLocationChanges()
+        pausesLocationUpdatesAutomatically = true
+        startUpdatingLocation()
+        activityType = .otherNavigation
+        desiredAccuracy = kCLLocationAccuracyThreeKilometers
+    }
+
+    deinit {
+        stopMonitoringSignificantLocationChanges()
     }
 
     var currentLocation: Bindable<Location> = Bindable<Location>()
@@ -57,7 +64,7 @@ extension LocationRepositoryImp: CLLocationManagerDelegate {
         guard let coordinate = locations.first?.coordinate else {
             return
         }
-        print("🌎 Updated location")
+        print("🌎 Updated location \(coordinate)")
         let updateValue = Location(longitude: coordinate.longitude, latitude: coordinate.latitude)
         currentLocation.update(with: updateValue)
     }
