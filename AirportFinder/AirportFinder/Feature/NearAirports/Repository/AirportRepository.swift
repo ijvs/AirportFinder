@@ -11,16 +11,21 @@ import Foundation
 typealias GetAiportListResult = Result<[Airport], Error>
 
 protocol AirportRepository {
-    func getAirportList(inLocation: Location,
-                        radius: Int,
+    func getAirportList(byRadius radius: Int,
+                        location: Location,
                         completion: @escaping (GetAiportListResult) -> Void)
 }
 
-class AirportRepositoryImp: AirportRepository {
+class AirportRepositoryImp: BaseNetworkService<[Airport]>, AirportRepository {
 
-    func getAirportList(inLocation: Location,
-                        radius: Int,
+    func getAirportList(byRadius radius: Int,
+                        location: Location,
                         completion: @escaping (GetAiportListResult) -> Void) {
-        
+        do {
+            let request = try AirportAPI.search(radius: radius, location: location).asURLRequest()
+            make(request: request, completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

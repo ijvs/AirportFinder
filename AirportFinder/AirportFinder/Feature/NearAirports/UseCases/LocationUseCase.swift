@@ -17,20 +17,30 @@ protocol RequestLocationAuthorizationUserCase {
     func requestLocationAuthorization()
 }
 
-protocol LocationUseCase: GetCurrentLocationUseCase, RequestLocationAuthorizationUserCase { }
+protocol LocationAuthorizationStatusUserCase {
+    func getLocationAuthorizationStatus() -> LocationAuthorizationStatus
+}
+
+protocol LocationUseCase: GetCurrentLocationUseCase,
+    RequestLocationAuthorizationUserCase,
+    LocationAuthorizationStatusUserCase { }
 
 class LocationUseCaseImp: LocationUseCase {
-    let locationManager: LocationRepository
+    let locationRepository: LocationRepository
 
-    init(locationManager: LocationRepository = LocationRepositoryImp()) {
-        self.locationManager = locationManager
+    init(locationRepository: LocationRepository = LocationRepositoryImp()) {
+        self.locationRepository = locationRepository
     }
 
     func getCurrentLocation(completion: (Location?) -> Void) {
-        completion(locationManager.currentLocation)
+        completion(locationRepository.currentLocation)
     }
 
     func requestLocationAuthorization() {
-        locationManager.requestLocationAuthorization()
+        locationRepository.requestLocationAuthorization()
+    }
+
+    func getLocationAuthorizationStatus() -> LocationAuthorizationStatus {
+        return locationRepository.authorizationStatus
     }
 }

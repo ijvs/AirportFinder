@@ -8,11 +8,11 @@
 
 import Foundation
 
-typealias GetAirportsResult = Result<Void, Error>
+typealias GetAirportsResult = Result<[Airport], Error>
 
 protocol GetAirportsUseCase {
-    func getNearAirports(inLocation location: Location,
-                         radius: Int,
+    func getNearAirports(byRadius radius: Int,
+                         location: Location,
                          completion: @escaping (GetAirportsResult) -> Void)
 }
 
@@ -26,16 +26,9 @@ class AirportUseCaseImp: AirportUseCase {
         self.airportWorker = airportWorker
     }
 
-    func getNearAirports(inLocation location: Location,
-                         radius: Int,
+    func getNearAirports(byRadius radius: Int,
+                         location: Location,
                          completion: @escaping (GetAirportsResult) -> Void) {
-        airportWorker.getAirportList(inLocation: location, radius: radius) { (result) in
-            switch result {
-            case .success:
-                break
-            case .failure:
-                break
-            }
-        }
+        airportWorker.getAirportList(byRadius: radius, location: location, completion: completion)
     }
 }

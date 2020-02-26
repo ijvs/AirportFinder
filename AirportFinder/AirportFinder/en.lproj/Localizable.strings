@@ -9,3 +9,13 @@
 "DISTANCE_SEARCH_BUTTON_TITLE" = "SEARCH";
 
 "DISTANCE_UNIT_DESCRIPTION" = "RADIUS IN KM";
+
+"LOCATION_DENIED_TITLE" = "Location Needed";
+
+"LOCATION_DENIED_MESSAGE" = "The localization services are disabled, please enable it.";
+
+"LOCATION_DENIED_ACTION" = "Go Settings";
+
+"ERROR_TITLE" = "Something went wrong";
+
+"RETRY" = "Retry";

@@ -9,3 +9,13 @@
 "DISTANCE_SEARCH_BUTTON_TITLE" = "BUSCAR";
 
 "DISTANCE_UNIT_DESCRIPTION" = "RADIO EN KM";
+
+"LOCATION_DENIED_TITLE" = "Localización Deshabilitada";
+
+"LOCATION_DENIED_MESSAGE" = "Los servicios de localización están deshabilitados, por favor habilitalos.";
+
+"LOCATION_DENIED_ACTION" = "Ir a Configuracion";
+
+"ERROR_TITLE" = "Algo salio mal";
+
+"RETRY" = "Reintentar";
