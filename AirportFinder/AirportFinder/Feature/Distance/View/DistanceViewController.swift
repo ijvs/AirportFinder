@@ -68,7 +68,7 @@ class DistanceViewController: UIViewController {
         return button
     }()
 
-    init(presenter: DistancePresenter = DistancePresenterImp()) {
+    init(presenter: DistancePresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
         setupView()
@@ -160,10 +160,11 @@ extension DistanceViewController {
     @objc func sliderDidChange() {
         let value = Int(counterSlider.value)
         counterLabel.text = "\(value)"
+        presenter.update(distance: value)
     }
 
     @objc func didTapSearchButton() {
-
+        presenter.search()
     }
 }
 
@@ -178,7 +179,6 @@ extension DistanceViewController: DistanceViewControllerDelegate {
         counterUnitsLabel.text = model.unitDescription
         searchButton.setTitle(model.searchButtonTitle, for: .normal)
         sliderDidChange()
-        
         view.setNeedsLayout()
        }
 }

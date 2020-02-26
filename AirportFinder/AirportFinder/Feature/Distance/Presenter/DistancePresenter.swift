@@ -11,13 +11,18 @@ import Foundation
 protocol DistancePresenter {
     var currentDistance: Int { get }
     func attach(view: DistanceViewControllerDelegate)
-    func updateDistance(distance: Int)
+    func update(distance: Int)
     func search()
 }
 
 class DistancePresenterImp: DistancePresenter {
 
-    var currentDistance: Int = 0
+    private(set) var currentDistance: Int = 0
+    private var coordinator: DistanceCoodinator
+
+    init(coordinator: DistanceCoodinator) {
+        self.coordinator = coordinator
+    }
 
     func attach(view: DistanceViewControllerDelegate) {
         view.config(model: .init(title: "AIRPORT",
@@ -29,11 +34,11 @@ class DistancePresenterImp: DistancePresenter {
                                  searchButtonTitle: "DISTANCE_SEARCH_BUTTON_TITLE".localized))
     }
 
-    func updateDistance(distance: Int) {
-
+    func update(distance: Int) {
+        currentDistance = distance
     }
 
     func search() {
-
+        coordinator.searchAirports(byRadius: currentDistance)
     }
 }

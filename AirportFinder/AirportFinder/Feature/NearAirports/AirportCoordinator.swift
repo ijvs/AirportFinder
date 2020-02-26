@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-protocol AirportCoordinator {
+protocol AirportCoordinator: Coordinator {
     func goToLocationSettings()
 }
 
-class AirportCoordinatorImp: Coordinator, AirportCoordinator {
+class AirportCoordinatorImp: AirportCoordinator {
 
     let window: UIWindow
 
