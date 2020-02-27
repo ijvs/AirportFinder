@@ -57,6 +57,8 @@ class AirportListViewController: UIViewController {
         tableView.register(AirportViewCell.self, forCellReuseIdentifier: AirportViewCell.description())
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = Theme.backgroundColor
     }
 
     private func showAlert(title: String, message: String) {

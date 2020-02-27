@@ -34,6 +34,7 @@ class AirportTabBarViewController: UITabBarController {
 
         super.init(nibName: nil, bundle: nil)
 
+        view.tintColor = Theme.tintColor
         mapViewController.tabBarItem = UITabBarItem(title: "Map",
                                                     image: UIImage(systemName: "map"),
                                                     tag: 0)
