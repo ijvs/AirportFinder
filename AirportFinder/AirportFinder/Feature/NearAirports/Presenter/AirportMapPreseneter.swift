@@ -118,7 +118,6 @@ extension AirportPresenterImp {
 
     private func loadAirportList(radius: Int, location: Location) {
         sendViewStateUpdate(state: .loading)
-        print("🛩 Loading airports \(location) \(radius)")
 
         airportUseCase.getNearAirports(byRadius: radius, location: location) {[weak self] (result) in
             guard let self = self else { return }
