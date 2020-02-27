@@ -14,8 +14,12 @@ class AirportTabBarViewController: UITabBarController {
     private var listViewController: AirportListViewController
     private var mapViewController: AirportMapViewController
 
-    init(listPresenter: AirportPresenter, mapPresenter: AirportPresenter) {
+    init(coordinator: AirportCoordinator) {
+
+        let listPresenter = AirportMapPresenterImp<AirportView.ViewModel>(coordinator: coordinator)
         listViewController = AirportListViewController(presenter: listPresenter)
+
+        let mapPresenter = AirportMapPresenterImp<AirportAnnotation.ViewModel>(coordinator: coordinator)
         mapViewController = AirportMapViewController(presenter: mapPresenter)
 
         super.init(nibName: nil, bundle: nil)
@@ -28,6 +32,10 @@ class AirportTabBarViewController: UITabBarController {
                                                      tag: 1)
 
         setViewControllers([mapViewController, listViewController], animated: false)
+    }
+
+    func updateSearchRadius(radius: Int) {
+
     }
 
     required init?(coder: NSCoder) {

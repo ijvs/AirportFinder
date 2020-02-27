@@ -9,8 +9,8 @@
 import Foundation
 
 protocol AirportPresenter: class {
-    var radius: Int {get set }
-    var coordinator: AirportCoordinator? { get set }
+    var radius: Int { get }
+    var coordinator: AirportCoordinator { get set }
     func attach(view: AirportViewControllerContract)
     func load()
     func handle(action: AirportAction)
@@ -31,13 +31,17 @@ class AirportMapPresenterImp<Model: AirportViewModel> {
     private var currentLocation: Bindable<Location>?
     private var view: AirportViewControllerContract?
 
-    var coordinator: AirportCoordinator?
-    var radius: Int = 0
+    var coordinator: AirportCoordinator
+    var radius: Int {
+        return coordinator.radius
+    }
 
     init(locationUseCase: LocationUseCase = LocationUseCaseImp(),
-         airportUseCase: AirportUseCase = AirportUseCaseImp()) {
+         airportUseCase: AirportUseCase = AirportUseCaseImp(),
+         coordinator: AirportCoordinator) {
         self.locationUseCase = locationUseCase
         self.airportUseCase = airportUseCase
+        self.coordinator = coordinator
     }
 }
 
@@ -66,7 +70,7 @@ extension AirportMapPresenterImp: AirportPresenter {
         case .load:
             load()
         case .goToAuthorizationSettings:
-            coordinator?.goToLocationSettings()
+            coordinator.goToLocationSettings()
         }
     }
 }
