@@ -23,13 +23,15 @@ protocol LocationRepository {
 
 class LocationRepositoryImp: CLLocationManager, LocationRepository {
 
+    let updateDistance: Double = 1000
+
     override init() {
         super.init()
         delegate = self
         pausesLocationUpdatesAutomatically = true
         startUpdatingLocation()
-        activityType = .otherNavigation
-        desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        distanceFilter = updateDistance
+        desiredAccuracy = kCLLocationAccuracyBestForNavigation
     }
 
     deinit {
@@ -64,7 +66,6 @@ extension LocationRepositoryImp: CLLocationManagerDelegate {
         guard let coordinate = locations.first?.coordinate else {
             return
         }
-        print("🌎 Updated location \(coordinate)")
         let updateValue = Location(longitude: coordinate.longitude, latitude: coordinate.latitude)
         currentLocation.update(with: updateValue)
     }
