@@ -70,8 +70,17 @@ extension AirportMapViewController: AirportViewControllerContract {
         switch state {
         case .loading:
             break
-        case .error:
-            break
+        case .error(let errorModel):
+            let alert = UIAlertController(title: errorModel.title,
+                                          message: errorModel.message,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: errorModel.actionText,
+                                          style: .destructive,
+                                          handler: {[weak self] (_) in
+                                            self?.presenter.handle(action: errorModel.action)
+            }))
+
+            present(alert, animated: true, completion: nil)
         case .empty:
             break
         case .content(let content):

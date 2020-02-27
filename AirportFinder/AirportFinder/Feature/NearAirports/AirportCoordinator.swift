@@ -9,15 +9,22 @@
 import Foundation
 import UIKit
 
-protocol AirportCoordinator: Coordinator {
-    var radius: Int { get set }
-    func goToLocationSettings()
+protocol AirportCoordinator: class, Coordinator {
+    var radius: Bindable<Int> { get set }
+    func openRadiusPreferences()
+    func openAppLocationSettings()
 }
 
+protocol AirportCoordinatorDelegate: class {
+    func openRadiusPreferences()
+}
+
+// MARK: - AirportCoordinator
 class AirportCoordinatorImp: AirportCoordinator {
 
+    weak var delegate: AirportCoordinatorDelegate?
     let window: UIWindow
-    var radius: Int = 0
+    var radius: Bindable<Int> = Bindable<Int>()
 
     private lazy var tabBarController: AirportTabBarViewController = {
         AirportTabBarViewController(coordinator: self)
@@ -32,7 +39,11 @@ class AirportCoordinatorImp: AirportCoordinator {
         window.makeKeyAndVisible()
     }
 
-    func goToLocationSettings() {
+    func openRadiusPreferences() {
+        delegate?.openRadiusPreferences()
+    }
 
+    func openAppLocationSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
 }

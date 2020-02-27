@@ -19,22 +19,22 @@ protocol AirportPresenter: class {
 // MARK: - AirportAction
 enum AirportAction {
     case goToAuthorizationSettings
-    case load
+    case loadAirportList
 }
 
 // MARK: - AirportPresenterImp
-class AirportMapPresenterImp<Model: AirportViewModel> {
+class AirportPresenterImp<Model: AirportViewModel> {
 
     private let locationUseCase: LocationUseCase
     private let airportUseCase: AirportUseCase
     private var authorizationStatus: Bindable<LocationAuthorizationStatus>?
-    private var currentLocation: Bindable<Location>?
     private var view: AirportViewControllerContract?
 
     var coordinator: AirportCoordinator
-    var radius: Int {
-        return coordinator.radius
-    }
+    private var currentLocationBindable: Bindable<Location>?
+
+    private var currentLocation: Location?
+    var radius: Int = 0
 
     init(locationUseCase: LocationUseCase = LocationUseCaseImp(),
          airportUseCase: AirportUseCase = AirportUseCaseImp(),
@@ -42,11 +42,16 @@ class AirportMapPresenterImp<Model: AirportViewModel> {
         self.locationUseCase = locationUseCase
         self.airportUseCase = airportUseCase
         self.coordinator = coordinator
+
+        coordinator.radius.addObservation(for: coordinator.radius) {[weak self] (_, value) in
+            self?.radius = value
+            self?.loadAirportList()
+        }
     }
 }
 
 // MARK: - AirportPresenter
-extension AirportMapPresenterImp: AirportPresenter {
+extension AirportPresenterImp: AirportPresenter {
 
     func attach(view: AirportViewControllerContract) {
         self.view = view
@@ -67,30 +72,31 @@ extension AirportMapPresenterImp: AirportPresenter {
 
     func handle(action: AirportAction) {
         switch action {
-        case .load:
-            load()
+        case .loadAirportList:
+            loadAirportList()
         case .goToAuthorizationSettings:
-            coordinator.goToLocationSettings()
+            coordinator.openAppLocationSettings()
         }
     }
 }
 
 // MARK: - Private Methods
-extension AirportMapPresenterImp {
+extension AirportPresenterImp {
+
     private func handle(authorizationStatusUpdates status: LocationAuthorizationStatus) {
         switch status {
         case .authorized:
-            guard let currentLocation = currentLocation else {
-                self.currentLocation = locationUseCase.getCurrentLocation()
+            guard let currentLocation = currentLocationBindable else {
+                self.currentLocationBindable = locationUseCase.getCurrentLocation()
                 handle(authorizationStatusUpdates: status)
                 return
             }
 
             currentLocation.addObservation(for: currentLocation, handler: { [weak self] (_, location) in
                 guard let self = self else { return }
-                self.loadAirportList(radius: self.radius, location: location)
+                self.currentLocation = location
+                self.loadAirportList()
             })
-
         case .notDetermined:
             locationUseCase.requestLocationAuthorization()
 
@@ -103,8 +109,16 @@ extension AirportMapPresenterImp {
         }
     }
 
+    private func loadAirportList() {
+        guard let currentLocation = currentLocation, radius > 0 else {
+            return
+        }
+        loadAirportList(radius: radius, location: currentLocation)
+    }
+
     private func loadAirportList(radius: Int, location: Location) {
         sendViewStateUpdate(state: .loading)
+        print("🛩 Loading airports \(location) \(radius)")
 
         airportUseCase.getNearAirports(byRadius: radius, location: location) {[weak self] (result) in
             guard let self = self else { return }
@@ -116,7 +130,7 @@ extension AirportMapPresenterImp {
                 let errorViewModel = AirportErrorViewModel(title: "ERROR_TITLE".localized,
                                                            message: error.localizedDescription,
                                                            actionText: "RETRY".localized,
-                                                           action: AirportAction.load)
+                                                           action: AirportAction.loadAirportList)
                 self.sendViewStateUpdate(state: .error(error: errorViewModel))
             }
         }

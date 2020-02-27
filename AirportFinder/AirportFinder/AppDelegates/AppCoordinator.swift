@@ -15,7 +15,9 @@ class AppCoordinator: Coordinator {
     var distanceCoordinator: DistanceCoodinator
 
     lazy var airportListCoordinator: AirportCoordinator = {
-        AirportCoordinatorImp(window: window)
+        let coordinator = AirportCoordinatorImp(window: window)
+        coordinator.delegate = self
+        return coordinator
     }()
 
     let rootViewController: UINavigationController = {
@@ -33,9 +35,17 @@ class AppCoordinator: Coordinator {
     }
 }
 
+// MARK: - DistanceCoodinatorDelegate
 extension AppCoordinator: DistanceCoodinatorDelegate {
     func searchAirports(byRadius radius: Int) {
-        airportListCoordinator.radius = radius
+        airportListCoordinator.radius.update(with: radius)
         airportListCoordinator.start()
+    }
+}
+
+// MARK: - AirportCoordinatorDelegate
+extension AppCoordinator: AirportCoordinatorDelegate {
+    func openRadiusPreferences() {
+        distanceCoordinator.start()
     }
 }

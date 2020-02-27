@@ -13,13 +13,23 @@ class AirportTabBarViewController: UITabBarController {
 
     private var listViewController: AirportListViewController
     private var mapViewController: AirportMapViewController
+    private weak var coordinator: AirportCoordinator?
+
+    private lazy var changeRadiusButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(didTapChangeRaidusButton), for: .touchUpInside)
+        button.layer.cornerRadius = LayoutConstants.buttonHeight/2
+        button.backgroundColor = Theme.tintColor
+        button.setTitle("RADIUS".localized, for: .normal)
+        return button
+    }()
 
     init(coordinator: AirportCoordinator) {
-
-        let listPresenter = AirportMapPresenterImp<AirportView.ViewModel>(coordinator: coordinator)
+        self.coordinator = coordinator
+        let listPresenter = AirportPresenterImp<AirportView.ViewModel>(coordinator: coordinator)
         listViewController = AirportListViewController(presenter: listPresenter)
 
-        let mapPresenter = AirportMapPresenterImp<AirportAnnotation.ViewModel>(coordinator: coordinator)
+        let mapPresenter = AirportPresenterImp<AirportAnnotation.ViewModel>(coordinator: coordinator)
         mapViewController = AirportMapViewController(presenter: mapPresenter)
 
         super.init(nibName: nil, bundle: nil)
@@ -32,13 +42,36 @@ class AirportTabBarViewController: UITabBarController {
                                                      tag: 1)
 
         setViewControllers([mapViewController, listViewController], animated: false)
-    }
 
-    func updateSearchRadius(radius: Int) {
+        changeRadiusButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(changeRadiusButton)
+        NSLayoutConstraint.activate([
+            tabBar.topAnchor.constraint(equalTo: changeRadiusButton.bottomAnchor,
+                                                       constant: LayoutConstants.buttonMargin),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: changeRadiusButton.trailingAnchor,
+                                                        constant: LayoutConstants.buttonMargin),
+            changeRadiusButton.widthAnchor.constraint(equalToConstant: LayoutConstants.buttonWidth),
+            changeRadiusButton.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonHeight)
+        ])
 
+        coordinator.radius.addObservation(for: coordinator.radius) {[weak self] (_, radius) in
+            self?.changeRadiusButton.setTitle("RADIUS".localized + ": \(radius)", for: .normal)
+        }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc func didTapChangeRaidusButton() {
+        coordinator?.openRadiusPreferences()
+    }
+}
+
+extension AirportTabBarViewController {
+    struct LayoutConstants {
+        static let buttonWidth: CGFloat = 160
+        static let buttonHeight: CGFloat = 40
+        static let buttonMargin: CGFloat = 16
     }
 }
