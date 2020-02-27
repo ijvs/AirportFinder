@@ -33,7 +33,7 @@ class ContainerTableViewCell<V: UIView>: UITableViewCell {
             view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             view.topAnchor.constraint(equalTo: contentView.topAnchor),
-            view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }

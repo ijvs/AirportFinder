@@ -41,7 +41,7 @@ enum AirportAPI: Endpoint, URLRequestConvertible {
         return nil
     }
 
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return [
             "x-rapidapi-host": "cometari-airportsfinder-v1.p.rapidapi.com",
             "x-rapidapi-key": "587948c69bmsh6bd1647577a4f54p168162jsn7979dc431956"

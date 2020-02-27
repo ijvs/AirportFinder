@@ -9,8 +9,6 @@
 import Foundation
 import MapKit
 
-
-
 class AirportAnnotation: MKPointAnnotation {
     init(model: ViewModel) {
         super.init()

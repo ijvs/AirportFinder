@@ -33,11 +33,10 @@ class LocationUseCaseImp: LocationUseCase {
         self.locationRepository = locationRepository
     }
 
-
     func getCurrentLocation() -> Bindable<Location> {
         return locationRepository.currentLocation
     }
-    
+
     func requestLocationAuthorization() {
         locationRepository.requestLocationAuthorization()
     }
