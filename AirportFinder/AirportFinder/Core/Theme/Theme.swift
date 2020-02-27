@@ -11,19 +11,21 @@ import UIKit
 
 struct Theme {
     static var backgroundColor: UIColor = {
-        return getDinamicColor(lightModeColor: .white, darkMode: .black)
+        return getDinamicColor(lightModeColor: UIColor(white: 240/255, alpha: 1),
+                               darkMode: UIColor(white: 22/255, alpha: 1.0))
     }()
 
     static var labelColor: UIColor = {
-        return getDinamicColor(lightModeColor: .red, darkMode: .yellow)
+        return getDinamicColor(lightModeColor: UIColor(white: 22/255, alpha: 1.0),
+                               darkMode: UIColor(white: 240/255, alpha: 1))
     }()
 
     static var secondaryLabelColor: UIColor = {
-        return getDinamicColor(lightModeColor: .gray, darkMode: .gray)
+        return .gray
     }()
 
     static var tintColor: UIColor = {
-        return getDinamicColor(lightModeColor: .blue, darkMode: .blue)
+        return UIColor(red: 247/255, green: 181/255, blue: 0/255, alpha: 1)
     }()
 }
 
