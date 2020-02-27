@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DistanceViewControllerDelegate {
+protocol DistanceViewControllerContract {
     func config(model: DistanceViewController.ViewModel)
 }
 
@@ -169,7 +169,7 @@ extension DistanceViewController {
 }
 
 // MARK: - DistanceViewControllerDelegate
-extension DistanceViewController: DistanceViewControllerDelegate {
+extension DistanceViewController: DistanceViewControllerContract {
     public func config(model: ViewModel) {
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle

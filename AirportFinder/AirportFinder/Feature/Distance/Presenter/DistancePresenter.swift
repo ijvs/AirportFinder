@@ -10,7 +10,7 @@ import Foundation
 
 protocol DistancePresenter {
     var currentDistance: Int { get }
-    func attach(view: DistanceViewControllerDelegate)
+    func attach(view: DistanceViewControllerContract)
     func update(distance: Int)
     func search()
 }
@@ -24,7 +24,7 @@ class DistancePresenterImp: DistancePresenter {
         self.coordinator = coordinator
     }
 
-    func attach(view: DistanceViewControllerDelegate) {
+    func attach(view: DistanceViewControllerContract) {
         view.config(model: .init(title: "AIRPORT",
                                  subtitle: "finder",
                                  sliderValue: 60,
