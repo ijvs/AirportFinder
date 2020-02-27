@@ -99,7 +99,6 @@ extension AirportMapPresenterImp {
                                                        message: "LOCATION_DENIED_MESSAGE".localized,
                                                        actionText: "LOCATION_DENIED_ACTION".localized,
                                                        action: AirportAction.goToAuthorizationSettings)
-            sendViewStateUpdate(state: .content(content: []))
             sendViewStateUpdate(state: .error(error: errorViewModel))
         }
     }
