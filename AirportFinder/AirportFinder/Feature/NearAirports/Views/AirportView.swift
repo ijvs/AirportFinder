@@ -89,10 +89,4 @@ extension AirportView {
         static let horizontalSpacing: CGFloat = 8
         static let verticalSpacing: CGFloat = 8
     }
-
-    struct ViewModel {
-        let title: String
-        let accessoryText: String
-        let description: String
-    }
 }

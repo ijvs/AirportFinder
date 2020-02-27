@@ -9,15 +9,14 @@
 import Foundation
 import UIKit
 
-protocol AppCoordinatorDelegate {
-    func goToAirporTabBar(radius: Int)
-}
-
 class AppCoordinator: Coordinator {
 
     let window: UIWindow
     var distanceCoordinator: DistanceCoodinator
-    var airportListCoordinator: AirportCoordinator
+
+    lazy var airportListCoordinator: AirportCoordinator = {
+        AirportCoordinatorImp(window: window)
+    }()
 
     let rootViewController: UINavigationController = {
         UINavigationController()
@@ -26,8 +25,6 @@ class AppCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         distanceCoordinator = DistanceCoodinatorImp(window: window)
-        airportListCoordinator = AirportCoordinatorImp(window: window)
-
         distanceCoordinator.delegate = self
     }
 

@@ -8,7 +8,16 @@
 
 import Foundation
 
-struct Airport: Decodable {
+protocol AirportEntity {
+    var identifier: String { get }
+    var code: String { get }
+    var name: String { get }
+    var location: Location { get }
+    var city: String { get }
+    var countryCode: String { get }
+}
+
+struct Airport: Decodable, AirportEntity {
     let identifier: String
     let code: String
     let name: String

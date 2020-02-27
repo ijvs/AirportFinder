@@ -54,9 +54,7 @@ class AirportListViewController: UIViewController {
             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         loadingView.configure()
-
         tableView.register(AirportViewCell.self, forCellReuseIdentifier: AirportViewCell.description())
-
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -67,7 +65,8 @@ class AirportListViewController: UIViewController {
 }
 
 // MARK: - AirportViewController
-extension AirportListViewController: AirportViewController {
+extension AirportListViewController: AirportViewControllerContract {
+
     var identifier: String {
         self.description
     }
@@ -76,14 +75,16 @@ extension AirportListViewController: AirportViewController {
 
     }
 
-    func update(state: ViewState<[AirportView.ViewModel], AirportViewErrorModel>) {
+    func update(state: ViewState<[AirportViewModel], AirportErrorViewModel>) {
         switch state {
         case .loading:
             loadingView.show()
         case .content(let content):
             loadingView.dismiss()
-            airportList = content
-            tableView.reloadData()
+            if let content = content as? [AirportView.ViewModel] {
+                airportList = content
+                tableView.reloadData()
+            }
         case .error(let errorModel):
             loadingView.dismiss()
             let alert = UIAlertController(title: errorModel.title,

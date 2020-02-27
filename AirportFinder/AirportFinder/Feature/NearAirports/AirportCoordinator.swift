@@ -19,31 +19,29 @@ class AirportCoordinatorImp: AirportCoordinator {
     let window: UIWindow
     var radius: Int = 0
 
-    private var presenter: AirportPresenter
-
-    private lazy var listViewController: AirportListViewController = {
-        return AirportListViewController(presenter: presenter)
-    }()
-
-    private lazy var mapViewController: AirportMapViewController = {
-        return AirportMapViewController(presenter: presenter)
-    }()
-
-    private lazy var tabBarController: AirportTabBarViewController = {
-        AirportTabBarViewController()
-    }()
+    private weak var listPresenter: AirportPresenter?
+    private weak var mapPresenter: AirportPresenter?
+    private var tabBarController: AirportTabBarViewController
 
     init(window: UIWindow) {
         self.window = window
 
-        presenter = AirportPresenterImp()
-        presenter.coordinator = self
-        presenter.radius = radius
+        let listPresenter = AirportMapPresenterImp<AirportView.ViewModel>()
+        let mapPresenter = AirportMapPresenterImp<AirportAnnotation.ViewModel>()
+
+        tabBarController = AirportTabBarViewController(listPresenter: listPresenter, mapPresenter: mapPresenter)
+        listPresenter.coordinator = self
+        listPresenter.radius = radius
+        self.listPresenter = listPresenter
+
+        mapPresenter.coordinator = self
+        mapPresenter.radius = radius
+        self.mapPresenter = mapPresenter
     }
 
     func start() {
-        presenter.radius = radius
-        tabBarController.configure(withControllers: [mapViewController, listViewController])
+        listPresenter?.radius = radius
+        mapPresenter?.radius = radius
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
     }
